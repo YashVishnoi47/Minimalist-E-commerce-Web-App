@@ -8,8 +8,8 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen py-2">
-     
+    <div className="flex w-full border-2 h-screen border-black flex-col min-h-screen py-2">
+     Root page
     </div>
   );
 }

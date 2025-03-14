@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={`w-full min-h-screen flex flex-col items-center`}>
           <Navbar />
-          <main>{children}</main>
+          <main className="w-full h-full">{children}</main>
         </body>
       </html>
     </ClerkProvider>

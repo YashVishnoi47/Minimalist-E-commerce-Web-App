@@ -13,9 +13,12 @@ import {
 const Navbar = () => {
   const { user } = useUser();
   return (
-    <div className="fixed flex items-center justify-between px-6 w-[60%] h-16 border-2 border-black mt-4 rounded-full bg-white bg-opacity-50">
+    <div className="flex relative items-center justify-between w-full h-20 border-2 border-black bg-white bg-opacity-50 p-2">
+      {/* Logo */}
+      <Link className="w-[8%] border-black  h-full flex justify-start items-center" href="/"><h1 className="font-bold text-4xl">Logo</h1></Link>
+
       {/* Nav Links */}
-      <div className="links flex gap-4 w-[30%] -2">
+      <div className="links h-full justify-start items-center border-black flex gap-4 w-[20%] -2">
         <Link
           className="rounded-full px-2 hover:bg-gray-100 transition-all duration-200 ease-in-out"
           href={"/"}
@@ -37,7 +40,7 @@ const Navbar = () => {
       </div>
 
       {/* Search Bar*/}
-      <div className="Search flex gap-4 w-[50%] -2">
+      <div className="Search h-full justify-center items-center border-black flex gap-4 w-[40%] -2">
         <input
           className="border-2 border-gray-400 rounded-full w-full h-10 p-4"
           type="text"
@@ -46,15 +49,15 @@ const Navbar = () => {
       </div>
 
       {/* User Controls */}
-      <div className="Search flex justify-end items-center gap-4 w-[30%] -2">
+      <div className="Search h-full border-black flex justify-end items-center gap-4 w-[30%] ">
         <SignedIn>
           <div className="flex items-center gap-1">
-            <h1
+            <Link
               className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out capitalize "
               href={"/userProfile"}
             >
               Wellcome! {user?.firstName}
-            </h1>
+            </Link >
             <UserButton />
           </div>
         </SignedIn>
