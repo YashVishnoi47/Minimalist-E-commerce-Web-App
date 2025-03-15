@@ -35,7 +35,7 @@ const UserAdressForm = (user) => {
   function onSubmit(values) {
     const updatedUser = updateUserAddressDetails(user._id, values);
     if (updatedUser) {
-      console.log("User Address Updated Successfully");
+      console.log("User Address Updated Successfully", values);
     }
   }
   return (
