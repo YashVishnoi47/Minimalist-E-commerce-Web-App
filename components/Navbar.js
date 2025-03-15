@@ -63,7 +63,7 @@ const Navbar = async () => {
               className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out capitalize "
               href={`/userProfile/${userId}`}
             >
-              Wellcome! {user.firstName}
+              Wellcome! {user?.firstName}
             </Link >
             <UserButton />
           </div>
