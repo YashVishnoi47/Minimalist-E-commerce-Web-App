@@ -58,7 +58,7 @@ export async function POST(req) {
 
     const user = {
       clerkId: id,
-      email: email_addresses[0].email_address,
+      email: email_addresses[0].email_Address,
       photo: image_url,
       firstName: first_name,
       lastName: last_name,
@@ -67,7 +67,7 @@ export async function POST(req) {
     const newUser = await createUser(user);
 
     if (newUser) {
-      await clerkClient.users.update(newUser.clerkId, {
+      await clerkClient.users.updateUserMetadata(newUser.clerkId, {
         publicMetadata: {
           userId: newUser._id,
           IsMasterAdmin: newUser.IsMasterAdmin,
