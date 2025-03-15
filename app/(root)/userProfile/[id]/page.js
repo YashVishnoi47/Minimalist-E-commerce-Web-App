@@ -1,7 +1,8 @@
 import React from "react";
 import UserInformation from "@/components/UserInformation";
 import { getUserById } from "@/lib/actions/user.actions";
-import UserAddressform from "@/components/UserAdressForm";
+
+
 
 const page = async ({ params }) => {
   const { id } = params;
@@ -25,7 +26,8 @@ const page = async ({ params }) => {
       {/* Bottom of the Profile Page */}
       <div className="bottom h-[90%]  border-black p-4 bg-white w-full rounded-lg">
         <UserInformation user={user} />
-        <UserAddressform />
+
+        
       </div>
     </div>
   );

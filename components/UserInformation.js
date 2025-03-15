@@ -1,16 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import UserAddressform from "@/components/UserAdressForm";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { getUserById } from "@/lib/actions/user.actions";
-const UserInformation = async ({user}) => {
-  
-
+const UserInformation = async ({ user }) => {
+  const users = user
   return (
     <div className="w-full min-h-screen bg-gray-50 px-12 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
@@ -34,7 +42,7 @@ const UserInformation = async ({user}) => {
                 {user?.firstName} {user?.lastName}
               </h2>
               <p className="text-gray-600">
-                {user?.email|| "No email provided"}
+                {user?.email || "No email provided"}
               </p>
             </div>
           </div>
@@ -93,12 +101,28 @@ const UserInformation = async ({user}) => {
           <div className="flex items-center gap-6 mb-6">
             <div>
               <div className="flex gap-2">
-                <h2 className="text-xl font-semibold text-gray-800 capitalize">
-                  Adress
-                </h2>
-                <Badge className={"px-2"} variant="default">
-                  User
-                </Badge>
+                <div className="flex gap-4">
+                  <h2 className="text-xl font-semibold text-gray-800 capitalize">
+                    Adress
+                  </h2>
+
+                  <Badge className={"px-2"} variant="default">
+                    User
+                  </Badge>
+                  <Dialog>
+                    <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">
+                      Edit
+                    </DialogTrigger>
+                    <DialogContent className="max-w-lg w-full p-6">
+                      <DialogHeader>
+                        <DialogTitle className="text-xl font-bold">
+                          Enter Address Details
+                        </DialogTitle>
+                        <UserAddressform user={users} />
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                </div>
               </div>
               <p className="text-gray-600">
                 {user?.country || "No Country provided"}
