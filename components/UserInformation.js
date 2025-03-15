@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,9 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const UserInformation = (user) => {
-  // const { user } = useUser();
+import { getUserById } from "@/lib/actions/user.actions";
+const UserInformation = async ({user}) => {
+  
 
   return (
     <div className="w-full min-h-screen bg-gray-50 px-12 py-10">
@@ -36,7 +34,7 @@ const UserInformation = (user) => {
                 {user?.firstName} {user?.lastName}
               </h2>
               <p className="text-gray-600">
-                {user?.emailAddresses?.[0]?.emailAddress || "No email provided"}
+                {user?.email|| "No email provided"}
               </p>
             </div>
           </div>
@@ -50,12 +48,12 @@ const UserInformation = (user) => {
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.firstName || ""}
+                  value={user.firstName || ""}
                 />
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.lastName || ""}
+                  value={user.lastName || ""}
                 />
               </div>
             </div>
@@ -66,7 +64,7 @@ const UserInformation = (user) => {
                 Email Address
               </h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
-                {user?.emailAddresses?.[0]?.emailAddress || "No email provided"}
+                {user?.email || "No email provided"}
               </p>
             </div>
 
@@ -99,7 +97,7 @@ const UserInformation = (user) => {
                   Adress
                 </h2>
                 <Badge className={"px-2"} variant="default">
-                  {/* User.Lable */}
+                  User
                 </Badge>
               </div>
               <p className="text-gray-600">

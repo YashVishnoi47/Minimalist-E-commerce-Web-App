@@ -1,17 +1,24 @@
-"use client";
 import React from "react";
 import Link from "next/link";
-import { useUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import {
   SignInButton,
   SignOutButton,
+  SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { getUserById } from "@/lib/actions/user.actions";
 
-const Navbar = () => {
-  const { user } = useUser();
+const Navbar = async () => {
+ const {sessionClaims} = auth();
+ const userId = sessionClaims?.publicMetadata?.userId;
+ const user = await getUserById(userId);
+
+
+
+
   return (
     <div className="flex relative items-center justify-between w-full h-20 border-2 border-black bg-white bg-opacity-50 p-2">
       {/* Logo */}
@@ -54,9 +61,9 @@ const Navbar = () => {
           <div className="flex items-center gap-1">
             <Link
               className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out capitalize "
-              href={"/userProfile"}
+              href={`/userProfile/${userId}`}
             >
-              Wellcome! {user?.firstName}
+              Wellcome! {user.firstName}
             </Link >
             <UserButton />
           </div>
@@ -64,7 +71,7 @@ const Navbar = () => {
 
         <SignedOut>
           <SignInButton className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out" />
-          <SignOutButton className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out" />
+          <SignUpButton className="rounded-full cursor-pointer px-4 py-2 hover:bg-red-100 transition-all duration-200 ease-in-out" />
         </SignedOut>
       </div>
     </div>
