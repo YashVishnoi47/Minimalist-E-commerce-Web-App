@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import UserAddressform from "@/components/UserAdressForm";
+import { Button } from "./ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -16,15 +17,33 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { deleteUser } from "@/lib/actions/user.actions";
 
-// Fetching "user" from  UserProfile page.
-const UserInformation = async ({ user }) => {
+// Fetching "user" from  DynamicProofilePagecomponent.
+const UserInformation =  ({ user, clerkId }) => {
   const userId = user._id;
+
+  // Make a seperate Delete Button component and call it here.
+  // const deletecccontent = async ()=>{
+  //   try {
+  //     const DeletedUser  = await deleteUser(clerkId);
+
+  //     if(DeletedUser){
+  //       console.log("User Deleted Successfully");
+  //     }
+  //   } catch (error) {
+  //     console.log("Delete User Error:", error);
+      
+  //   }
+  // }
+  
   return (
     <div className="w-full min-h-screen bg-gray-50 px-12 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Personal Information
       </h1>
+
+      
 
       <div className="flex flex-col gap-8">
         {/* Top Section (User Info) */}
