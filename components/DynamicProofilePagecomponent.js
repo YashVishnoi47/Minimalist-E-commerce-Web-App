@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-// import UserInformation from "./UserInformation";
 import dynamic from "next/dynamic";
 
 const UserInformation = dynamic(() => import("./UserInformation"));
@@ -9,12 +8,17 @@ const SellerProfile = dynamic(() => import("./sellerComponents/SellerProfile"));
 const DynamicProofilePagecomponent = ({ user, userId }) => {
   const [activeComponent, setactiveComponent] = useState("UserInformation");
   return (
-    <div className="w-full h-screen relative flex flex-col items-center gap-2  justify-start">
+    <div className="w-full h-screen relative flex flex-col items-center gap-2 justify-start">
       {/* Top of the Profile Page */}
       <div className="top flex gap-2 items-center border-b-2 border-black p-1 h-[10%] px-2 w-full rounded-lg">
         <div
           onClick={() => setactiveComponent("UserInformation")}
-          className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]"
+          className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "UserInformation"
+                 ? "bg-black text-white"
+                 : ""
+             }`}
         >
           User Information
         </div>
@@ -23,7 +27,10 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
         </div>
         <div
           onClick={() => setactiveComponent("SellerProfile")}
-          className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]"
+          className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
+             }`}
         >
           Seller
         </div>
