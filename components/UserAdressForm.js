@@ -33,7 +33,7 @@ const UserAdressForm = (user) => {
   });
 
   function onSubmit(values) {
-    const updatedUser = updateUserAddressDetails(user._id, values);
+    const updatedUser = updateUserAddressDetails({userId:user._id, values:values});
     if (updatedUser) {
       console.log("User Address Updated Successfully", values);
     }

@@ -51,10 +51,9 @@ export async function POST(req) {
 
   const { id } = evt.data;
   const eventType = evt.type;
-
+  // Create User
   if (eventType === "user.created") {
-    const { id, email_addresses, image_url, first_name, last_name } =
-      evt.data;
+    const { id, email_addresses, image_url, first_name, last_name } = evt.data;
 
     const user = {
       clerkId: id,
@@ -77,7 +76,7 @@ export async function POST(req) {
 
     return NextResponse.json({ message: "OK", user: newUser });
   }
-
+  // Update User
   if (eventType === "user.updated") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
@@ -92,12 +91,12 @@ export async function POST(req) {
 
     return NextResponse.json({ message: "OK", user: updatedUser });
   }
-
-  if(eventType === "user.deleted") {
+  // Delete User
+  if (eventType === "user.deleted") {
     const { id } = evt.data;
 
     const user = {
-      clerkId: id
+      clerkId: id,
     };
 
     const deletedUser = await deleteUser(user);
