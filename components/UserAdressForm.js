@@ -34,8 +34,8 @@ const UserAdressForm = (user) => {
 
 
   // Function to Submit the form and update the adress details for user.
-  function onSubmit(values) {
-    const updatedUser = updateUserAddressDetails({userId:user._id, values:values});
+  async function onSubmit(values) {
+    const updatedUser = await updateUserAddressDetails({userId:user._id, values});
     if (updatedUser) {
       console.log("User Address Updated Successfully", values);
     }
