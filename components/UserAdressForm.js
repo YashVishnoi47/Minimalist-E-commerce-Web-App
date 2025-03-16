@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { UserAddressformSchema } from "@/lib/validator";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -13,16 +14,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import {
   updateUser,
   updateUserAddressDetails,
 } from "@/lib/actions/user.actions";
 
-const UserAdressForm = (user) => {
-  const userId = user._id;
+// Fetching "userId" from UserInformation Component.
+const UserAdressForm = (userId ) => {
+  // Form Hook
   const form = useForm({
     resolver: zodResolver(UserAddressformSchema),
+    // Default Values for the form.
     defaultValues: {
       label: "n",
       country: "n",
@@ -36,7 +38,10 @@ const UserAdressForm = (user) => {
   // Function to Submit the form and update the adress details for user.
   async function onSubmit(values) {
     try {
-      const updatedUser = await updateUserAddressDetails({userId, values});
+      const updatedUser = await updateUserAddressDetails({
+        userId: userId.userId,
+        values,
+      });
       if (updatedUser) {
         console.log("User Address Updated Successfully", values);
       }
@@ -44,10 +49,13 @@ const UserAdressForm = (user) => {
       console.log("User Address Update Error:", error);
     }
   }
+
   return (
     <div className="w-full h-[70vh] flex flex-col   justify-start">
+      {/* User Adress Form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-8">
+          {/* FormField Div */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Label */}
             <FormField

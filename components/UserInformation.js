@@ -16,9 +16,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { getUserById } from "@/lib/actions/user.actions";
+
+// Fetching "user" from  UserProfile page.
 const UserInformation = async ({ user }) => {
-  const users = user
+  const userId = user._id;
   return (
     <div className="w-full min-h-screen bg-gray-50 px-12 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
@@ -30,13 +31,6 @@ const UserInformation = async ({ user }) => {
         <div className="w-2/3 bg-white shadow-md rounded-lg p-6">
           {/* Profile */}
           <div className="flex items-center gap-6 mb-6">
-            {/* <Image
-              src={user?.imageUrl || "/default-profile.png"}
-              alt="User Profile"
-              width={90}
-              height={90}
-              className="rounded-full border-4 border-purple-500"
-            /> */}
             <div>
               <h2 className="text-xl font-semibold text-gray-800 capitalize">
                 {user?.firstName} {user?.lastName}
@@ -95,6 +89,7 @@ const UserInformation = async ({ user }) => {
             </div>
           </div>
         </div>
+
         {/* Bottom Section (User Info) */}
         <div className="w-2/3 bg-white shadow-md rounded-lg p-6">
           {/* Adress */}
@@ -107,7 +102,7 @@ const UserInformation = async ({ user }) => {
                   </h2>
 
                   <Badge className={"px-2"} variant="default">
-                    User
+                    {user.addresses?.[0].label || "No Label"}
                   </Badge>
                   <Dialog>
                     <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">
@@ -118,14 +113,14 @@ const UserInformation = async ({ user }) => {
                         <DialogTitle className="text-xl font-bold">
                           Enter Address Details
                         </DialogTitle>
-                        <UserAddressform user={users} />
+                        <UserAddressform userId={userId} />
                       </DialogHeader>
                     </DialogContent>
                   </Dialog>
                 </div>
               </div>
               <p className="text-gray-600">
-                {user?.country || "No Country provided"}
+                {user.addresses?.[0].country || "No Country provided"}
               </p>
             </div>
           </div>
@@ -140,12 +135,12 @@ const UserInformation = async ({ user }) => {
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.State || "Uttar Pardesh"}
+                  value={user.addresses?.[0].state || ""}
                 />
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.City || "Noida"}
+                  value={user.addresses?.[0].city || ""}
                 />
               </div>
             </div>
@@ -154,7 +149,7 @@ const UserInformation = async ({ user }) => {
             <div>
               <h3 className="text-lg font-semibold text-gray-700">ZIP code</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
-                {user?.ZipCode || "No Zip code provided"}
+                {user.addresses?.[0].zipCode || "No Zip code provided"}
               </p>
             </div>
 
@@ -172,12 +167,13 @@ const UserInformation = async ({ user }) => {
             <div>
               <h3 className="text-lg font-semibold text-gray-700">Street</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
-                {user?.street || "Not Set"}
+                {user.addresses?.[0].street || "Not Set"}
               </p>
             </div>
           </div>
         </div>
 
+        {/* Faqs */}
         <div className="w-2/3 bg-white shadow-md rounded-lg p-6">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
