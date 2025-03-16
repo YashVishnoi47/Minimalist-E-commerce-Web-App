@@ -20,6 +20,7 @@ import {
 } from "@/lib/actions/user.actions";
 
 const UserAdressForm = (user) => {
+  const userId = user._id;
   const form = useForm({
     resolver: zodResolver(UserAddressformSchema),
     defaultValues: {
@@ -32,12 +33,15 @@ const UserAdressForm = (user) => {
     },
   });
 
-
   // Function to Submit the form and update the adress details for user.
   async function onSubmit(values) {
-    const updatedUser = await updateUserAddressDetails({userId:user._id, values});
-    if (updatedUser) {
-      console.log("User Address Updated Successfully", values);
+    try {
+      const updatedUser = await updateUserAddressDetails({userId, values});
+      if (updatedUser) {
+        console.log("User Address Updated Successfully", values);
+      }
+    } catch (error) {
+      console.log("User Address Update Error:", error);
     }
   }
   return (
