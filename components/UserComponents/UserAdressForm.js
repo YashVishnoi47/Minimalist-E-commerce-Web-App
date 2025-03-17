@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { UserAddressformSchema } from "@/lib/validator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -45,7 +45,7 @@ const UserAdressForm = (userId) => {
         values,
       });
       if (updatedUser) {
-        router.push(`/userProfile/${userId}`);
+        router.push(`/userProfile/${userId.userId}`);
       }
     } catch (error) {
       console.log("User Address Update Error:", error);
