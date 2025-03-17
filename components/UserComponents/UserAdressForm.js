@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { UserAddressformSchema } from "@/lib/validator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/router";
 import {
   Form,
   FormControl,
@@ -20,7 +21,8 @@ import {
 } from "@/lib/actions/user.actions";
 
 // Fetching "userId" from UserInformation Component.
-const UserAdressForm = (userId ) => {
+const UserAdressForm = (userId) => {
+  const router = useRouter();
   // Form Hook
   const form = useForm({
     resolver: zodResolver(UserAddressformSchema),
@@ -43,7 +45,7 @@ const UserAdressForm = (userId ) => {
         values,
       });
       if (updatedUser) {
-        console.log("User Address Updated Successfully", values);
+        router.push(`/userProfile/${userId}`);
       }
     } catch (error) {
       console.log("User Address Update Error:", error);

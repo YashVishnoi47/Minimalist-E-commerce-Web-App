@@ -1,5 +1,5 @@
 import React from "react";
-import UserInformation from "@/components/UserInformation";
+import UserInformation from "@/components/UserComponents/UserInformation";
 import { getUserById } from "@/lib/actions/user.actions";
 import { auth } from "@clerk/nextjs/server";
 import DynamicProofilePagecomponent from "@/components/DynamicProofilePagecomponent";

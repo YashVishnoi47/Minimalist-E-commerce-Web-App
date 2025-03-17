@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { useUser } from "@clerk/nextjs";
-import Loader from "./Loader";
+import Loader from "./UtilityComponents/Loader";
 
-const UserInformation = dynamic(() => import("./UserInformation"));
-const SellerProfile = dynamic(() => import("./sellerComponents/SellerProfile"));
+const UserInformation = dynamic(() => import("./UserComponents/UserInformation"));
+const BecomeSeller = dynamic(() => import("./sellerComponents/BecomeSeller"));
 
 const DynamicProofilePagecomponent = ({ user, userId }) => {
   const { isSignedIn, isLoaded } = useUser();
@@ -54,11 +54,11 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
       </div>
 
       {/* Bottom of the Profile Page */}
-      <div className="bottom h-[90%]  border-black p-4 bg-white w-full rounded-lg">
+      <div className="bottom h-[90%]  border-black bg-white w-full rounded-lg">
         {activeComponent === "UserInformation" && (
           <UserInformation clerkId={userId} user={user} />
         )}
-        {activeComponent === "SellerProfile" && <SellerProfile user={user} />}
+        {activeComponent === "SellerProfile" && <BecomeSeller user={user} />}
       </div>
     </div>
   );

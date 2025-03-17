@@ -1,0 +1,80 @@
+"use client";
+import React from "react";
+import { Button } from "../ui/button";
+import { UserToSeller } from "@/lib/actions/user.actions";
+import { CheckCircle, CheckCircleIcon, Rocket } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+const BecomeSeller = ({ user }) => {
+  const userId = user._id;
+  const router = useRouter();
+
+  const handleUserToSellers = async () => {
+    try {
+      const newSeller = await UserToSeller({ userId });
+      if (newSeller?.success) {
+        router.push(`/userProfile/${userId}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // For the user Which is not a seller.
+  if (user.IsSeller === false) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white ">
+        <div className="max-w-lg p-8 bg-white text-gray-900 rounded-2xl shadow-2xl text-center">
+          <div className="flex justify-center mb-4">
+            {/* <Store className="text-blue-500 w-16 h-16" /> */}
+          </div>
+          <h2 className="text-3xl font-extrabold mb-2">
+            Start Selling with Us!
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Turn your ideas into income. Join thousands of successful sellers
+            growing their businesses on our platform.
+          </p>
+
+          <div className="flex flex-col gap-3 text-left">
+            <p className="flex items-center gap-2">
+              <CheckCircle className="text-green-500" /> Easy product listing
+            </p>
+            <p className="flex items-center gap-2">
+              <CheckCircle className="text-green-500" /> Secure payment handling
+            </p>
+            <p className="flex items-center gap-2">
+              <CheckCircle className="text-green-500" /> 24/7 customer support
+            </p>
+          </div>
+
+          <Button
+            onClick={handleUserToSellers}
+            className="mt-6 bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300 transform hover:scale-105"
+          >
+            <Rocket className="mr-2" /> Start Selling Now
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
+  // For the User Which is a seller.
+  return (
+    <div className="w-full h-screen flex flex-col justify-center items-center bg-white text-center p-6">
+      <CheckCircleIcon className="text-green-500 w-20 h-20 mb-4 animate-bounce" />
+      <h1 className="text-4xl font-bold text-gray-800 mb-2">
+        Congratulations!
+      </h1>
+      <p className="text-lg text-gray-600 mb-6">
+        You are now a verified seller. Start building your profile to attract
+        buyers.
+      </p>
+      <Button className="bg-blue-500 text-white px-6 py-3 rounded-2xl shadow-md hover:bg-blue-600 transition duration-300">
+        Create Your Seller Profile
+      </Button>
+    </div>
+  );
+};
+
+export default BecomeSeller;
