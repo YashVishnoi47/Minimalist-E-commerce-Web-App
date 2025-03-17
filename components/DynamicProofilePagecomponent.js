@@ -1,12 +1,28 @@
 "use client";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { useUser } from "@clerk/nextjs";
+import { useParams } from "next/navigation";
 
 const UserInformation = dynamic(() => import("./UserInformation"));
 const SellerProfile = dynamic(() => import("./sellerComponents/SellerProfile"));
 
-const DynamicProofilePagecomponent = ({ user, userId }) => {
+const DynamicProofilePagecomponent = ({ DBuser, userId }) => {
+  const Params = useParams();
+  const { id } = Params;
+  const { isSignedIn, user, isLoaded } = useUser()
+  console.log(user);
+
   const [activeComponent, setactiveComponent] = useState("UserInformation");
+
+  if(!isSignedIn){
+    return <div>You are not Allowed</div>;
+  }
+
+  if(!isLoaded){
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full h-screen relative flex flex-col items-center gap-2 justify-start">
       {/* Top of the Profile Page */}
@@ -39,7 +55,7 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
       {/* Bottom of the Profile Page */}
       <div className="bottom h-[90%]  border-black p-4 bg-white w-full rounded-lg">
         {activeComponent === "UserInformation" && (
-          <UserInformation clerkId={userId} user={user} />
+          <UserInformation clerkId={userId} user={DBuser} />
         )}
         {activeComponent === "SellerProfile" && <SellerProfile />}
       </div>

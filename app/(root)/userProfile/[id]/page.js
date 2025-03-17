@@ -11,7 +11,7 @@ const page = async ({ params }) => {
 
   return (
     <div >
-      <DynamicProofilePagecomponent user={user} userId={userId} />
+      <DynamicProofilePagecomponent DBuser={user} userId={userId} />
       
     </div>
   );
