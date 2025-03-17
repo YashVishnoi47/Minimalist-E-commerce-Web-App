@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./UtilityComponents/Loader";
 
-const UserInformation = dynamic(() => import("./UserComponents/UserInformation"));
+const UserInformation = dynamic(() =>
+  import("./UserComponents/UserInformation")
+);
 const BecomeSeller = dynamic(() => import("./sellerComponents/BecomeSeller"));
 
 const DynamicProofilePagecomponent = ({ user, userId }) => {
@@ -39,17 +41,23 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
         >
           User Information
         </div>
-        <div className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]">
-          Wishlist
-        </div>
-        <div
-          onClick={() => setactiveComponent("SellerProfile")}
-          className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+        {user.IsSeller === true && (
+          <div
+            onClick={() => setactiveComponent("SellerProfile")}
+            className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
              items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
                activeComponent === "SellerProfile" ? "bg-black text-white" : ""
              }`}
-        >
-          Seller
+          >
+            Seller
+          </div>
+        )}
+
+        <div className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]">
+          Orders
+        </div>
+        <div className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]">
+          Wishlist
         </div>
       </div>
 
