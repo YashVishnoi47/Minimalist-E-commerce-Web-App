@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { UserToSeller } from "@/lib/actions/user.actions";
 import { CheckCircle, CheckCircleIcon, Rocket } from "lucide-react";
 import { useRouter } from "next/navigation";
+import SellerForm from "./SellerForm";
 
 const BecomeSeller = ({ user }) => {
   const userId = user._id;
@@ -59,20 +60,15 @@ const BecomeSeller = ({ user }) => {
     );
   };
 
+      // <p className="text-lg text-gray-600 mb-6">
+      //   You are now a verified seller. Start building your profile to attract
+      //   buyers.
+      // </p>
+      
   // For the User Which is a seller.
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center bg-white text-center p-6">
-      <CheckCircleIcon className="text-green-500 w-20 h-20 mb-4 animate-bounce" />
-      <h1 className="text-4xl font-bold text-gray-800 mb-2">
-        Congratulations!
-      </h1>
-      <p className="text-lg text-gray-600 mb-6">
-        You are now a verified seller. Start building your profile to attract
-        buyers.
-      </p>
-      <Button className="bg-blue-500 text-white px-6 py-3 rounded-2xl shadow-md hover:bg-blue-600 transition duration-300">
-        Create Your Seller Profile
-      </Button>
+      <SellerForm user={user}/>
     </div>
   );
 };

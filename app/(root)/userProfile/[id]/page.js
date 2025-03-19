@@ -5,14 +5,13 @@ import { auth } from "@clerk/nextjs/server";
 import DynamicProofilePagecomponent from "@/components/DynamicProofilePagecomponent";
 
 const page = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params;
   const user = await getUserById(id);
-  const { userId } = auth();
+  const { userId } = await auth();
 
   return (
     <div >
       <DynamicProofilePagecomponent user={user} userId={userId} />
-      
     </div>
   );
 };

@@ -28,12 +28,12 @@ const UserAdressForm = (userId) => {
     resolver: zodResolver(UserAddressformSchema),
     // Default Values for the form.
     defaultValues: {
-      label: "n",
-      country: "n",
-      state: "n",
-      city: "n",
-      zipCode: "n",
-      street: "n",
+      label: "",
+      country: "",
+      state: "",
+      city: "",
+      zipCode: "",
+      street: "",
     },
   });
 
@@ -53,7 +53,7 @@ const UserAdressForm = (userId) => {
   }
 
   return (
-    <div className="w-full h-[70vh] flex flex-col   justify-start">
+    <div className="w-full h-[70vh] flex flex-col justify-start">
       {/* User Adress Form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-8">

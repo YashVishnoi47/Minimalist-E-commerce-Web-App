@@ -30,6 +30,7 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
     <div className="w-full h-screen relative flex flex-col items-center gap-2 justify-start">
       {/* Top of the Profile Page */}
       <div className="top flex gap-2 items-center border-b-2 border-black p-1 h-[10%] px-2 w-full rounded-lg">
+        {/* User Information Component Button */}
         <div
           onClick={() => setactiveComponent("UserInformation")}
           className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
@@ -41,7 +42,8 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
         >
           User Information
         </div>
-        {user.IsSeller === true && (
+        {/* Become a Seller and Seller Profile Component Button */}
+        {user.IsSeller === false ? (
           <div
             onClick={() => setactiveComponent("SellerProfile")}
             className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
@@ -49,7 +51,17 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
                activeComponent === "SellerProfile" ? "bg-black text-white" : ""
              }`}
           >
-            Seller
+            Become a Seller
+          </div>
+        ) : (
+          <div
+            onClick={() => setactiveComponent("SellerProfile")}
+            className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
+             }`}
+          >
+            Seller Profile
           </div>
         )}
 

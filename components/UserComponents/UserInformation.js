@@ -20,7 +20,7 @@ import {
 import { deleteUser } from "@/lib/actions/user.actions";
 
 // Fetching "user" from  DynamicProofilePagecomponent.
-const UserInformation =  ({ user, clerkId }) => {
+const UserInformation = ({ user, clerkId }) => {
   const userId = user._id;
 
   // Make a seperate Delete Button component and call it here.
@@ -33,17 +33,15 @@ const UserInformation =  ({ user, clerkId }) => {
   //     }
   //   } catch (error) {
   //     console.log("Delete User Error:", error);
-      
+
   //   }
   // }
-  
+
   return (
     <div className="w-full h-screen bg-gray-50 px-12 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Personal Information
       </h1>
-
-      
 
       <div className="flex flex-col gap-8">
         {/* Top Section (User Info) */}
