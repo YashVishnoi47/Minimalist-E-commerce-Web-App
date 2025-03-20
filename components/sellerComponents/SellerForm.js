@@ -15,8 +15,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { createSeller } from "@/lib/actions/seller.action";
+import { useRouter } from "next/navigation";
 
 const SellerForm = ({ user }) => {
+  const userId = user._id;
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(SellerformSchema),
     defaultValues: {
@@ -33,7 +36,7 @@ const SellerForm = ({ user }) => {
 
   async function onSubmit(values) {
     try {
-      const newSeller = await createSeller(values);
+      const newSeller = await createSeller(values,userId);
       if (newSeller) {
         router.push(`/userProfile/${user._id}`);
       }
