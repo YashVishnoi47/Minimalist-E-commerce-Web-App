@@ -149,11 +149,11 @@ const UserInformation = ({ user, clerkId }) => {
                 State and City
               </h3>
               <div className="flex gap-2 mt-2">
-                <input
+                {/* <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
                   value={user?.addresses?.[0].state || "Empty"}
-                />
+                /> */}
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
