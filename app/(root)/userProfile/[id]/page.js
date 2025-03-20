@@ -7,7 +7,7 @@ import DynamicProofilePagecomponent from "@/components/DynamicProofilePagecompon
 const page = async ({ params }) => {
   const { id } = await params;
   const user = await getUserById(id);
-  const { userId } = await auth();
+  const { userId } =  auth();
 
   return (
     <div >
