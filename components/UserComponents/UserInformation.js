@@ -119,7 +119,7 @@ const UserInformation = ({ user, clerkId }) => {
                   </h2>
 
                   <Badge className={"px-2"} variant="default">
-                    {user.addresses?.[0].label || "No Label"}
+                    {user?.addresses?.[0]?.label || "No Label"}
                   </Badge>
                   <Dialog>
                     <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">
@@ -137,7 +137,7 @@ const UserInformation = ({ user, clerkId }) => {
                 </div>
               </div>
               <p className="text-gray-600">
-                {user.addresses?.[0].country || "No Country provided"}
+                {user?.addresses?.[0]?.country || "No Country provided"}
               </p>
             </div>
           </div>
@@ -152,12 +152,12 @@ const UserInformation = ({ user, clerkId }) => {
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user.addresses?.[0].state || ""}
+                  value={user?.addresses?.[0].state || ""}
                 />
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user.addresses?.[0].city || ""}
+                  value={user?.addresses?.[0].city || ""}
                 />
               </div>
             </div>

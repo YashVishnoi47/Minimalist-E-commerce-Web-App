@@ -4,7 +4,10 @@ import dynamic from "next/dynamic";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./UtilityComponents/Loader";
 
-const UserInformation = dynamic(() =>
+const 
+
+
+UserInformation = dynamic(() =>
   import("./UserComponents/UserInformation")
 );
 const BecomeSeller = dynamic(() => import("./sellerComponents/BecomeSeller"));
