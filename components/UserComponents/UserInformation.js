@@ -152,12 +152,12 @@ const UserInformation = ({ user, clerkId }) => {
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.addresses?.[0].state || ""}
+                  value={user?.addresses?.[0].state || "Empty"}
                 />
                 <input
                   className="w-1/2 p-3 border border-gray-300 rounded bg-gray-100"
                   disabled
-                  value={user?.addresses?.[0].city || ""}
+                  value={user?.addresses?.[0].city || "Empty"}
                 />
               </div>
             </div>
@@ -166,7 +166,7 @@ const UserInformation = ({ user, clerkId }) => {
             <div>
               <h3 className="text-lg font-semibold text-gray-700">ZIP code</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
-                {user.addresses?.[0].zipCode || "No Zip code provided"}
+                {user?.addresses?.[0].zipCode || "No Zip code provided"}
               </p>
             </div>
 
@@ -184,7 +184,7 @@ const UserInformation = ({ user, clerkId }) => {
             <div>
               <h3 className="text-lg font-semibold text-gray-700">Street</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
-                {user.addresses?.[0].street || "Not Set"}
+                {user?.addresses?.[0].street || "Not Set"}
               </p>
             </div>
           </div>
