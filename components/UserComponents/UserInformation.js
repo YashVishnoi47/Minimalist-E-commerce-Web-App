@@ -180,7 +180,7 @@ const UserInformation = ({ user, clerkId }) => {
               </p>
             </div>
 
-            {/* Username */}
+            {/* Street */}
             <div>
               <h3 className="text-lg font-semibold text-gray-700">Street</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">
