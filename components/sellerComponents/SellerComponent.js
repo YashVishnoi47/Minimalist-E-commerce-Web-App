@@ -8,7 +8,7 @@ import SellerForm from "./SellerForm";
 import Link from "next/link";
 import ButtonA from "../UtilityComponents/ButtonA";
 
-const BecomeSeller = ({ user }) => {
+const Seller = ({ user, seller }) => {
   const userId = user._id;
   const router = useRouter();
 
@@ -65,16 +65,21 @@ const BecomeSeller = ({ user }) => {
   // For the User Which is a seller.
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center bg-white text-center p-6">
-      {!user.SellerId && (
+      {!user.SellerID ? (
         <div className="w-full h-1/2 flex flex-col justify-center items-center">
           <h1 className="text-xl">You don't have a Seller Account</h1>
-          <Link className="mt-4 hover:cursor-pointer" href={`/becomeSeller/${user._id}`}>
+          <Link
+            className="mt-4 hover:cursor-pointer"
+            href={`/becomeSeller/${user._id}`}
+          >
             <ButtonA className="cursor-pointer">Hello</ButtonA>
           </Link>
         </div>
+      ) : (
+        <div>{seller.firstName}</div>
       )}
     </div>
   );
 };
 
-export default BecomeSeller;
+export default Seller;

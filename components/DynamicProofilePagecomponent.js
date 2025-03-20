@@ -7,9 +7,9 @@ import Loader from "./UtilityComponents/Loader";
 const UserInformation = dynamic(() =>
   import("./UserComponents/UserInformation")
 );
-const BecomeSeller = dynamic(() => import("./sellerComponents/BecomeSeller"));
+const Seller = dynamic(() => import("./sellerComponents/SellerComponent"));
 
-const DynamicProofilePagecomponent = ({ user, userId }) => {
+const DynamicProofilePagecomponent = ({seller, user, userId }) => {
   const { isSignedIn, isLoaded } = useUser();
 
   const [activeComponent, setactiveComponent] = useState("UserInformation");
@@ -76,9 +76,9 @@ const DynamicProofilePagecomponent = ({ user, userId }) => {
       {/* Bottom of the Profile Page */}
       <div className="bottom h-[90%]  border-black bg-white w-full rounded-lg">
         {activeComponent === "UserInformation" && (
-          <UserInformation clerkId={userId} user={user} />
+          <UserInformation seller={seller} clerkId={userId} user={user} />
         )}
-        {activeComponent === "SellerProfile" && <BecomeSeller user={user} />}
+        {activeComponent === "SellerProfile" && <Seller seller={seller} user={user} />}
       </div>
     </div>
   );

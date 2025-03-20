@@ -2,7 +2,7 @@ import SellerForm from "@/components/sellerComponents/SellerForm";
 import { getUserById } from "@/lib/actions/user.actions";
 import React from "react";
 
-const BecomeSeller = ({ params }) => {
+const Seller = ({ params }) => {
   const { userId } = params;
   const user = getUserById(userId);
   return (
@@ -12,4 +12,4 @@ const BecomeSeller = ({ params }) => {
   );
 };
 
-export default BecomeSeller;
+export default Seller;
