@@ -67,7 +67,7 @@ const Seller = ({ user, seller }) => {
     <div className="w-full h-screen flex flex-col justify-center items-center bg-white text-center p-6">
       {!user.SellerID ? (
         <div className="w-full h-1/2 flex flex-col justify-center items-center">
-          <h1 className="text-xl">You don't have a Seller Account</h1>
+          <h1 className="text-xl">You don&apos;t have a Seller Account</h1>
           <Link
             className="mt-4 hover:cursor-pointer"
             href={`/becomeSeller/${user._id}`}
