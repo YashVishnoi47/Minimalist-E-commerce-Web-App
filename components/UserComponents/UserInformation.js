@@ -162,7 +162,7 @@ const UserInformation = ({ user, clerkId }) => {
               </div>
             </div>
 
-            {/* Email */}
+            {/* Zipcode */}
             <div>
               <h3 className="text-lg font-semibold text-gray-700">ZIP code</h3>
               <p className="w-full p-3 mt-2 border border-gray-300 rounded bg-gray-100">

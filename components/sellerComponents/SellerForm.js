@@ -36,7 +36,7 @@ const SellerForm = ({ user }) => {
 
   async function onSubmit(values) {
     try {
-      const newSeller = await createSeller(values,userId);
+      const newSeller = await createSeller(values, userId);
       if (newSeller) {
         router.push(`/userProfile/${user._id}`);
       }
