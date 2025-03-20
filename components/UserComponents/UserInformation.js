@@ -199,11 +199,11 @@ const UserInformation = ({ user, clerkId, seller }) => {
                 <div className="flex gap-2">
                   <div className="flex gap-4">
                     <h2 className="text-xl font-semibold text-gray-800 capitalize">
-                      Adress
+                      Seller Information
                     </h2>
 
                     <Badge className={"px-2"} variant="default">
-                      {user?.addresses?.[0]?.label || "No Label"}
+                      {user?.FirstName || "No Name"}
                     </Badge>
                     <Dialog>
                       <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">
