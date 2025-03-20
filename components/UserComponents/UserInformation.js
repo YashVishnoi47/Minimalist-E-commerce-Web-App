@@ -18,6 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { deleteUser } from "@/lib/actions/user.actions";
+import SellerForm from "../sellerComponents/SellerForm";
 
 // Fetching "user" from  DynamicProofilePagecomponent.
 const UserInformation = ({ user, clerkId, seller }) => {
@@ -214,7 +215,7 @@ const UserInformation = ({ user, clerkId, seller }) => {
                           <DialogTitle className="text-xl font-bold">
                             Enter Address Details
                           </DialogTitle>
-                          <UserAddressform userId={userId} />
+                          {/* <SellerForm seller={seller} /> */}
                         </DialogHeader>
                       </DialogContent>
                     </Dialog>

@@ -14,10 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { createSeller } from "@/lib/actions/seller.action";
+import { createSeller, updateSeller } from "@/lib/actions/seller.action";
 import { useRouter } from "next/navigation";
 
-const SellerForm = ({ user }) => {
+const SellerForm = ({ user, seller }) => {
   const userId = user._id;
   const router = useRouter();
   const form = useForm({
@@ -35,13 +35,27 @@ const SellerForm = ({ user }) => {
   });
 
   async function onSubmit(values) {
-    try {
-      const newSeller = await createSeller(values, userId);
-      if (newSeller) {
-        router.push(`/userProfile/${user._id}`);
+    if (seller) {
+      try {
+        const updatedSeller = await updateSeller({
+          values,
+          sellerId: seller._id,
+        });
+        if (updatedSeller) {
+          router.push(`/userProfile/${userId}`);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        const newSeller = await createSeller(values, userId);
+        if (newSeller) {
+          router.push(`/userProfile/${userId}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
