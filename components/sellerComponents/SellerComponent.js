@@ -2,9 +2,8 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { UserToSeller } from "@/lib/actions/user.actions";
-import { CheckCircle, CheckCircleIcon, Rocket } from "lucide-react";
+import { CheckCircle, Rocket } from "lucide-react";
 import { useRouter } from "next/navigation";
-import SellerForm from "./SellerForm";
 import Link from "next/link";
 import ButtonA from "../UtilityComponents/ButtonA";
 

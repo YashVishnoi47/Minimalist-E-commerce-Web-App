@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { deleteUser } from "@/lib/actions/user.actions";
 import SellerForm from "../sellerComponents/SellerForm";
-
+import Link from "next/link";
 // Fetching "user" from  DynamicProofilePagecomponent.
 const UserInformation = ({ user, clerkId, seller }) => {
   const userId = user._id;
@@ -206,6 +206,12 @@ const UserInformation = ({ user, clerkId, seller }) => {
                     <Badge className={"px-2"} variant="default">
                       {user?.FirstName || "No Name"}
                     </Badge>
+
+                    <Link href={`/sellerDashboard/${userId}`}>
+                      <Button className={"cursor-pointer"}>
+                        Go to DashBoard
+                      </Button>
+                    </Link>
                     <Dialog>
                       <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">
                         Edit
