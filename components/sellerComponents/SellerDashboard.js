@@ -3,11 +3,11 @@ import React, { act, useState } from "react";
 import SellerDashboardNavbar from "./SellerDashboardNavbar";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-const OverView = dynamic(() => import("./OverView"));
+const OverView = dynamic(() => import("./SellerTabs/OverView"));
 const Products = dynamic(() =>
-  import("@/components/sellerComponents/Products")
+  import("@/components/sellerComponents/SellerTabs/Products")
 );
-const Orders = dynamic(() => import("@/components/sellerComponents/Orders"));
+const Orders = dynamic(() => import("@/components/sellerComponents/SellerTabs/Orders"));
 
 const SellerDashboardComp = ({ seller }) => {
   const [activecomponent, setActivecomponent] = useState("OverView");

@@ -1,13 +1,13 @@
 import React from "react";
-import ProductSold from "./ProductSoldComponent";
-import SalesCard from "./SalesCard";
-import OrdersCard from "./OrdersCard";
-import DailySalesGraph from "./graphs/DailySalesGraph";
-import CategorySalesGraph from "./graphs/CategorySalesGraph";
+import ProductSold from "../SellerCards/ProductSoldCard";
+import SalesCard from "../SellerCards/SalesCard";
+import OrdersCard from "../SellerCards/OrdersCard";
+import DailySalesGraph from "../graphs/DailySalesGraph";
+import CategorySalesGraph from "../graphs/CategorySalesGraph";
 
 const OverView = () => {
   return (
-    <div className="w-full flex flex-col bg-gray-50 p-4 h-full border-red-600">
+    <div className="w-full flex flex-col bg-gray-50 p-4 -full border-red-600">
       {/* Stats */}
       <div className="w-full h-[25%] flex gap-10 border-black">
         <ProductSold />
