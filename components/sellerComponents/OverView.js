@@ -1,14 +1,41 @@
-import React from 'react'
-import ProductSold from './ProductSold'
-import SalesCard from './SalesCard'
+import React from "react";
+import ProductSold from "./ProductSoldComponent";
+import SalesCard from "./SalesCard";
+import OrdersCard from "./OrdersCard";
+import DailySalesGraph from "./graphs/DailySalesGraph";
+import CategorySalesGraph from "./graphs/CategorySalesGraph";
 
 const OverView = () => {
   return (
-    <div className="w-full flex gap-10 p-4 h-full border-2 border-red-600">
-     <ProductSold/>
-     <SalesCard/>
-    </div>
-  )
-}
+    <div className="w-full flex flex-col bg-gray-50 p-4 h-full border-red-600">
+      {/* Stats */}
+      <div className="w-full h-[25%] flex gap-10 border-black">
+        <ProductSold />
+        <SalesCard />
+        <OrdersCard />
+      </div>
 
-export default OverView
+      {/* Separator */}
+      <div className="w-full h-[1.5px] mt-5 mb-5 bg-black"></div>
+
+      {/* Graphs */}
+      <div className="w-full h-[70%]  flex justify-between items-center gap-4">
+        <div className="w-full h-full">
+          <h1 className="text-4xl mb-4 ml-2 font-bold bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text">
+            Daily Sales
+          </h1>
+          <DailySalesGraph />
+        </div>
+
+        <div className="w-full h-full">
+          <h1 className="text-3xl mb-4 ml-2 font-bold bg-gradient-to-r from-green-600 to-blue-500 text-transparent bg-clip-text">
+            Sales Breakdown
+          </h1>
+          <CategorySalesGraph />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OverView;
