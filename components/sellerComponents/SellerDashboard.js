@@ -7,7 +7,9 @@ const OverView = dynamic(() => import("./SellerTabs/OverView"));
 const Products = dynamic(() =>
   import("@/components/sellerComponents/SellerTabs/Products")
 );
-const Orders = dynamic(() => import("@/components/sellerComponents/SellerTabs/Orders"));
+const Orders = dynamic(() =>
+  import("@/components/sellerComponents/SellerTabs/Orders")
+);
 
 const SellerDashboardComp = ({ seller }) => {
   const [activecomponent, setActivecomponent] = useState("OverView");
@@ -25,7 +27,9 @@ const SellerDashboardComp = ({ seller }) => {
           <div
             onClick={() => setActivecomponent("OverView")}
             className={`w-full cursor-pointer flex gap-2 rounded-2xl
-           justify-start px-2 items-center transition-all duration-200 ease-in-out h-[8%] border-2 ${activecomponent === "OverView" && "shadow-2xl "}`}
+           justify-start px-2 items-center transition-all duration-200 ease-in-out h-[8%] border-2 ${
+             activecomponent === "OverView" && "shadow-2xl "
+           }`}
           >
             <Image
               src={"/icons/overview.svg"}
@@ -40,7 +44,9 @@ const SellerDashboardComp = ({ seller }) => {
           <div
             onClick={() => setActivecomponent("Products")}
             className={`w-full cursor-pointer flex gap-2 rounded-2xl
-           justify-start px-2  transition-all duration-200 ease-in-out items-center h-[8%] border-2 ${activecomponent === "Products" && "shadow-2xl"}`}
+           justify-start px-2  transition-all duration-200 ease-in-out items-center h-[8%] border-2 ${
+             activecomponent === "Products" && "shadow-2xl"
+           }`}
           >
             <Image
               src={"/icons/products.svg"}
@@ -55,7 +61,9 @@ const SellerDashboardComp = ({ seller }) => {
           <div
             onClick={() => setActivecomponent("Orders")}
             className={`w-full cursor-pointer flex gap-2 rounded-2xl
-            justify-start px-2 items-center transition-all duration-200 ease-in-out h-[8%] border-2 ${activecomponent === "Orders" && "shadow-2xl"}`}
+            justify-start px-2 items-center transition-all duration-200 ease-in-out h-[8%] border-2 ${
+              activecomponent === "Orders" && "shadow-2xl"
+            }`}
           >
             <Image
               src={"/icons/orders.svg"}
@@ -74,7 +82,7 @@ const SellerDashboardComp = ({ seller }) => {
         <SellerDashboardNavbar seller={seller} />
 
         {activecomponent === "OverView" && <OverView />}
-        {activecomponent === "Products" && <Products />}
+        {activecomponent === "Products" && <Products seller={seller} />}
         {activecomponent === "Orders" && <Orders />}
 
         {/* Load Other Components here */}
