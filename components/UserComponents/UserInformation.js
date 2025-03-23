@@ -209,7 +209,7 @@ const UserInformation = ({ user, clerkId, seller }) => {
 
                     <Link href={`/sellerDashboard/${userId}`}>
                       {/* <Button className={"cursor-pointer"}> */}
-                        Go to DashBoard
+                      Go to DashBoard
                       {/* </Button> */}
                     </Link>
                     <Dialog>
