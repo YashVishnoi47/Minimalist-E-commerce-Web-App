@@ -1,8 +1,12 @@
+import { ClerkProvider } from "@clerk/nextjs";
+
 const Layout = ({ children }) => {
   return (
-    <div className="w-full min-h-[100vh] flex justify-center items-start ">
-      {children}
-    </div>
+    <ClerkProvider>
+      <div className="w-full min-h-[100vh] flex justify-center items-start ">
+        {children}
+      </div>
+    </ClerkProvider>
   );
 };
 
