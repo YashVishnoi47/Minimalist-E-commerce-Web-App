@@ -22,7 +22,7 @@ const ProductForm = ({ seller }) => {
     resolver: zodResolver(ProductformSchema),
     defaultValues: {
       productName: "",
-      productDescription: "",
+      ProductDiscription: "",
       productPrice: 0,
       productQuantity: 0,
       productDiscount: 0,
@@ -63,7 +63,7 @@ const ProductForm = ({ seller }) => {
             {/* productDescription */}
             <FormField
               control={form.control}
-              name="productDescription"
+              name="ProductDiscription"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Product Description</FormLabel>
