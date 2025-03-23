@@ -208,9 +208,9 @@ const UserInformation = ({ user, clerkId, seller }) => {
                     </Badge>
 
                     <Link href={`/sellerDashboard/${userId}`}>
-                      <Button className={"cursor-pointer"}>
+                      {/* <Button className={"cursor-pointer"}> */}
                         Go to DashBoard
-                      </Button>
+                      {/* </Button> */}
                     </Link>
                     <Dialog>
                       <DialogTrigger className="border-2 border-black px-2 cursor-pointer rounded-3xl">

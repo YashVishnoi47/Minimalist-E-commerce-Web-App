@@ -1,11 +1,15 @@
+import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const Layout = ({ children }) => {
   return (
     <ClerkProvider>
-      <div className="w-full min-h-[100vh] flex justify-center items-start ">
-        {children}
-      </div>
+      <html lang="en">
+        <body className={`w-full min-h-screen flex flex-col items-center`}>
+          <Navbar />
+          <main className="w-full h-full">{children}</main>
+        </body>
+      </html>
     </ClerkProvider>
   );
 };

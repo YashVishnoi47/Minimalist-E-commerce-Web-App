@@ -11,7 +11,7 @@ const Orders = dynamic(() =>
   import("@/components/sellerComponents/SellerTabs/Orders")
 );
 
-const SellerDashboardComp = ({ seller }) => {
+const SellerDashboardComp = ({ seller, allProducts }) => {
   const [activecomponent, setActivecomponent] = useState("OverView");
   return (
     <div className="w-full h-full border-r-2 flex  border-black">
@@ -81,8 +81,10 @@ const SellerDashboardComp = ({ seller }) => {
         {/* Navbar */}
         <SellerDashboardNavbar seller={seller} />
 
-        {activecomponent === "OverView" && <OverView />}
-        {activecomponent === "Products" && <Products seller={seller} />}
+        {activecomponent === "OverView" && <OverView allProducts={allProducts} />}
+        {activecomponent === "Products" && (
+          <Products seller={seller}  />
+        )}
         {activecomponent === "Orders" && <Orders />}
 
         {/* Load Other Components here */}

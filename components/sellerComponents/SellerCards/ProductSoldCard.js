@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const ProductSold = () => {
+const ProductSold = ({allProducts}) => {
   return (
     <div className="w-[18%] min-h-[140px] flex flex-col gap-3 p-4 rounded-3xl h-[18%] border border-green-600 bg-green-100 shadow-md">
       {/* Header */}
@@ -22,7 +22,7 @@ const ProductSold = () => {
         <div className="flex justify-between items-center">
           <span className="text-sm text-gray-700">Total Products:</span>
           <span className="text-lg font-semibold text-green-900">
-            40
+            {allProducts.length}
           </span>
         </div>
 
