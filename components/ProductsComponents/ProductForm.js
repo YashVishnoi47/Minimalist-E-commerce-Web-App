@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { ProductformSchema } from "@/lib/validator";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CreateProduct, UpdateProduct } from "@/lib/actions/Product.action";
 import {
   Form,
   FormControl,
@@ -14,26 +16,46 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { CreateProduct } from "@/lib/actions/Product.action";
+import { UploadButton, UploadDropzone } from "@uploadthing/react";
 
-const ProductForm = ({ seller }) => {
+const ProductForm = ({ seller, type, product }) => {
+  const productID = product._id;
   const form = useForm({
     resolver: zodResolver(ProductformSchema),
-    defaultValues: {
-      productName: "",
-      ProductDiscription: "",
-      productPrice: 0,
-      productQuantity: 0,
-      productDiscount: 0,
-    },
+    defaultValues:
+      product && type === "update"
+        ? {
+            productName: product.productName,
+            ProductDiscription: product.ProductDiscription,
+            productPrice: product.productPrice,
+            productQuantity: product.productQuantity,
+            productDiscount: product.productDiscount,
+          }
+        : {
+            productName: "",
+            ProductDiscription: "",
+            productPrice: 0,
+            productQuantity: 0,
+            productDiscount: 0,
+          },
   });
 
+  // Function to Submit the Product Form and Create the Product or Update the product.
   async function onSubmit(values) {
     try {
-      const product = await CreateProduct(values, seller);
-      if (product) {
-        alert("Product created successfully");
+      if (type === "create") {
+        const product = await CreateProduct(values, seller);
+        if (product) {
+          alert("Product created successfully");
+        }
+      }
+      if (type === "update") {
+        const updatedproduct = await UpdateProduct(productID, values);
+        if (updatedproduct) {
+          form.reset();
+          alert("Product Updated successfully");
+          console.log("updated");
+        }
       }
     } catch (error) {
       console.log("Product Form Submition Error:", error);
@@ -43,8 +65,8 @@ const ProductForm = ({ seller }) => {
   return (
     <div>
       <Form {...form}>
-        <div>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <div className="">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
             {/* productName */}
             <FormField
               control={form.control}
@@ -127,6 +149,19 @@ const ProductForm = ({ seller }) => {
                 </FormItem>
               )}
             />
+            {/* Image Upload and Fetch is Left for the End */}
+            {/* <FormField
+              control={form.control}
+              name="imageUrl"
+              render={({ field }) => (
+                <FormItem className="w-full flex flex-col gap-1 items-start">
+                  <FormControl className="border-2 border-purple-800 w-full">
+                    <UploadButton className="border-2 border-black" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            /> */}
 
             <Button type="submit">Submit</Button>
           </form>

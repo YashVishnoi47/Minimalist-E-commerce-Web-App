@@ -81,9 +81,11 @@ const SellerDashboardComp = ({ seller, allProducts }) => {
         {/* Navbar */}
         <SellerDashboardNavbar seller={seller} />
 
-        {activecomponent === "OverView" && <OverView allProducts={allProducts} />}
+        {activecomponent === "OverView" && (
+          <OverView allProducts={allProducts} />
+        )}
         {activecomponent === "Products" && (
-          <Products seller={seller}  />
+          <Products seller={seller} allProducts={allProducts} />
         )}
         {activecomponent === "Orders" && <Orders />}
 
