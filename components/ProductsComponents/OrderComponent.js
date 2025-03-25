@@ -14,7 +14,7 @@ const OrderComponent = ({ product, sellerId, userId }) => {
   return (
     <div>
       Product Details: {product.productName}
-      <Button ocClick={HandlePlaceOrder}>Order This Product</Button>
+      <Button onClick={HandlePlaceOrder}>Order This Product</Button>
     </div>
   );
 };
