@@ -16,9 +16,8 @@ export default async function Home() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {allProducts.map((product) => (
-          <Link href={`/product/details/${product._id}`}>
+          <Link key={product._id} href={`/product/details/${product._id}`}>
             <div
-              key={product._id}
               className="border bg-white shadow-lg rounded-lg p-4 flex items-center gap-4"
             >
               {/* Uncomment if you have images */}
