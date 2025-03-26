@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
-const SalesCard = () => {
+const SalesCard = ({ DoneOrders }) => {
+  // const totalAmount = orders.reduce((sum, DoneOrders) => sum + DoneOrders.TotalPrice, 0);
   return (
     <div className="w-[18%] h-[140px] flex flex-col gap-2 justify-start items-start p-4 rounded-3xl bg-purple-100 border-2 border-gray-300 shadow-sm">
       <div className="flex gap-4 w-full items-center">

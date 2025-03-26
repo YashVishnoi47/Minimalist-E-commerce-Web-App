@@ -16,8 +16,8 @@ const OverView = ({
     <div className="w-full flex flex-col bg-gray-50 p-4 -full border-red-600">
       {/* Stats */}
       <div className="w-full h-[25%] flex gap-10 border-black">
-        <ProductSold allProducts={allProducts} />
-        <SalesCard />
+        <ProductSold DoneOrders={DoneOrders} allProducts={allProducts} />
+        <SalesCard DoneOrders={DoneOrders} />
         <OrdersCard
           DoneOrders={DoneOrders}
           pendingOrders={pendingOrders}
