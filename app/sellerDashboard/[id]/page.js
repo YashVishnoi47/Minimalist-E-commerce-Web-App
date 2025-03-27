@@ -12,22 +12,34 @@ import {
 const SellerDashboard = async ({ params }) => {
   const { id } = params;
   const user = await getUserById(id);
+  // Seller
   const SellerID = user.SellerID;
   const seller = await findSellerById(SellerID);
 
+  // All Products
   const allProducts = await getProductBySellerID(seller);
+  // Seller Orders
   const SellerOrders = await GetOrderBySellerID({ sellerId: SellerID });
+  // Pending Orders
   const PendingCondition = { Status: "Pending" };
   const pendingOrders = await GetOrderOnConditions({
     conditions: PendingCondition,
   });
+  // Done Orders
   const DoneCondition = { Status: "Done" };
   const DoneOrders = await GetOrderOnConditions({ conditions: DoneCondition });
+
+  // Order on todays date.now()
+  const dateCondition = {
+    OrderDate: { $gte: new Date().setHours(0, 0, 0, 0) },
+  };
+  const DateOrders = await GetOrderOnConditions({ conditions: dateCondition });
 
   if (!seller) return <Loader />;
 
   return (
     <SellerDashboardComp
+      DateOrders={DateOrders}
       DoneOrders={DoneOrders}
       pendingOrders={pendingOrders}
       SellerOrders={SellerOrders}

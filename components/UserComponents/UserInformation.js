@@ -192,7 +192,7 @@ const UserInformation = ({ user, clerkId, seller }) => {
         </div>
 
         {/* Seller Section (Seller Info) */}
-        {seller && (
+        {seller ? (
           <div className="w-2/3 bg-white shadow-md rounded-lg p-6">
             {/* Adress */}
             <div className="flex items-center gap-6 mb-6">
@@ -281,6 +281,31 @@ const UserInformation = ({ user, clerkId, seller }) => {
                 </p>
               </div>
             </div>
+          </div>
+        ) : (
+          <div className="w-2/3 bg-white shadow-md rounded-lg p-6">
+            {/* Become a Seller and Seller Profile Component Button */}
+            {user.IsSeller === false ? (
+              <div
+                onClick={() => setactiveComponent("SellerProfile")}
+                className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
+             }`}
+              >
+                Become a Seller
+              </div>
+            ) : (
+              <div
+                onClick={() => setactiveComponent("SellerProfile")}
+                className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
+             }`}
+              >
+                Seller Profile
+              </div>
+            )}
           </div>
         )}
 

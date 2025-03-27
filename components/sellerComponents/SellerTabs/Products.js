@@ -1,5 +1,6 @@
-import Product from "@/components/ProductsComponents/ProductCard";
+import ProductCard from "@/components/ProductsComponents/ProductCard";
 import { Button } from "@/components/ui/button";
+import ButtonA from "@/components/UtilityComponents/ButtonA";
 import Link from "next/link";
 import React from "react";
 
@@ -17,14 +18,14 @@ const Products = ({ seller, allProducts }) => {
           className="border-2 border-black outline-none w-[40%] px-4 py-2 rounded-full"
         />
         <Link href={`/product/createProduct/${seller._id}`}>
-          Create New Product
+          <ButtonA value={"Create New Product"} />
         </Link>
       </div>
       {/* Products */}
       <div className="w-full h-[80%] flex flex-col gap-4">
         {allProducts.length > 0 ? (
           allProducts.map((product) => (
-            <Product key={product._id} seller={seller} product={product} />
+            <ProductCard key={product._id} seller={seller} product={product} />
           ))
         ) : (
           <div>No Products Found...</div>

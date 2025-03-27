@@ -1,6 +1,6 @@
 import React from "react";
 
-const ButtonA = () => {
+const ButtonA = ({ value }) => {
   return (
     <button className="relative cursor-pointer flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group">
       <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
@@ -11,7 +11,7 @@ const ButtonA = () => {
       </span>
       <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0" />
       <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
-        Create One
+        {value ? value : "Create One"}
       </span>
     </button>
   );

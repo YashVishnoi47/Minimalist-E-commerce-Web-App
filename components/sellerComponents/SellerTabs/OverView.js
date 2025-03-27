@@ -6,6 +6,7 @@ import DailySalesGraph from "../graphs/DailySalesGraph";
 import CategorySalesGraph from "../graphs/CategorySalesGraph";
 
 const OverView = ({
+  DateOrders,
   allProducts,
   seller,
   SellerOrders,
@@ -35,7 +36,7 @@ const OverView = ({
           <h1 className="text-4xl mb-4 ml-2 font-bold bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text">
             Daily Sales
           </h1>
-          <DailySalesGraph />
+          <DailySalesGraph DoneOrders={DoneOrders} />
         </div>
 
         <div className="w-full h-full">

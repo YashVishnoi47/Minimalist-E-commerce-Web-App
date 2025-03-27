@@ -4,7 +4,7 @@ import SellerDashboardNavbar from "./SellerDashboardNavbar";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 const OverView = dynamic(() => import("./SellerTabs/OverView"));
-const Products = dynamic(() =>
+const ProductCard = dynamic(() =>
   import("@/components/sellerComponents/SellerTabs/Products")
 );
 const Orders = dynamic(() =>
@@ -12,6 +12,7 @@ const Orders = dynamic(() =>
 );
 
 const SellerDashboardComp = ({
+  DateOrders,
   seller,
   allProducts,
   SellerOrders,
@@ -89,6 +90,7 @@ const SellerDashboardComp = ({
 
         {activecomponent === "OverView" && (
           <OverView
+            DateOrders={DateOrders}
             DoneOrders={DoneOrders}
             pendingOrders={pendingOrders}
             seller={seller}
@@ -97,7 +99,7 @@ const SellerDashboardComp = ({
           />
         )}
         {activecomponent === "Products" && (
-          <Products seller={seller} allProducts={allProducts} />
+          <ProductCard seller={seller} allProducts={allProducts} />
         )}
         {activecomponent === "Orders" && (
           <Orders SellerOrders={SellerOrders} seller={seller} />

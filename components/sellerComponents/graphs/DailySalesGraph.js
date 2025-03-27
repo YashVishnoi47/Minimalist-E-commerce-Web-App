@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-const DailySalesGraphs = () => {
+const DailySalesGraphs = ({ DoneOrders }) => {
   const salesData = [
     { date: "2025-03-16", sales: 150 },
     { date: "2025-03-17", sales: 200 },
@@ -32,11 +32,11 @@ const DailySalesGraphs = () => {
     { date: "2025-03-22", sales: 250 },
   ];
   const data = {
-    labels: salesData.map((item) => item.date), // X-axis: dates
+    labels: DoneOrders.map((item) => item.OrderDate), // X-axis: dates
     datasets: [
       {
         label: "Daily Sales",
-        data: salesData.map((item) => item.sales), // Y-axis: sales numbers
+        data: DoneOrders.map((item) => item.TotalPrice), // Y-axis: sales numbers
         borderColor: "rgba(75,192,192,1)",
         backgroundColor: "rgba(75,192,192,0.2)",
         tension: 0.2, // Smooth curve
@@ -59,9 +59,8 @@ const DailySalesGraphs = () => {
   };
 
   return (
-      <div className="w-full max-w-3xl h-[90%] p-8 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl  border-gray-300 flex flex-col justify-center items-center gap-6">
+    <div className="w-full max-w-3xl h-[90%] p-8 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl  border-gray-300 flex flex-col justify-center items-center gap-6">
       {/* Stylish Heading */}
-      
 
       {/* Chart Container */}
       <div className="w-full h-[320px]">

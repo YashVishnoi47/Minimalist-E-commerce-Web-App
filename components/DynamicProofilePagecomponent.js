@@ -42,28 +42,7 @@ const DynamicProofilePagecomponent = ({seller, user, userId }) => {
         >
           User Information
         </div>
-        {/* Become a Seller and Seller Profile Component Button */}
-        {user.IsSeller === false ? (
-          <div
-            onClick={() => setactiveComponent("SellerProfile")}
-            className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
-             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
-               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
-             }`}
-          >
-            Become a Seller
-          </div>
-        ) : (
-          <div
-            onClick={() => setactiveComponent("SellerProfile")}
-            className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
-             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
-               activeComponent === "SellerProfile" ? "bg-black text-white" : ""
-             }`}
-          >
-            Seller Profile
-          </div>
-        )}
+        
 
         <div className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]">
           Orders

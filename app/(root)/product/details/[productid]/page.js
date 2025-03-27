@@ -5,6 +5,7 @@ import { getProductByID } from "@/lib/actions/Product.action";
 import React from "react";
 import { auth } from "@clerk/nextjs/server";
 import { findSellerById } from "@/lib/actions/seller.action";
+import { getUserById } from "@/lib/actions/user.actions";
 
 const page = async ({ params }) => {
   const { productid } = params;
@@ -13,6 +14,7 @@ const page = async ({ params }) => {
   const sellerId = product.productSeller;
   const { sessionClaims } = auth();
   const userId = sessionClaims?.publicMetadata?.userId;
+  const user = await getUserById(userId);
 
   if (!product)
     return (
@@ -24,11 +26,7 @@ const page = async ({ params }) => {
   // Add a button to order the product
   return (
     <div>
-      <OrderComponent
-        userId={userId}
-        sellerId={sellerId}
-        product={product}
-      />
+      <OrderComponent  user={user} sellerId={sellerId} product={product} />
     </div>
   );
 };
