@@ -42,6 +42,17 @@ const DynamicProofilePagecomponent = ({seller, user, userId }) => {
         >
           User Information
         </div>
+        <div
+          onClick={() => setactiveComponent("SellerProfile")}
+          className={`btn-1 flex justify-center transition-all duration-200 ease-in-out
+             items-center border-2 cursor-pointer rounded-xl h-[70%] w-[15%] ${
+               activeComponent === "Seller"
+                 ? "bg-black text-white"
+                 : ""
+             }`}
+        >
+          Seller
+        </div>
         
 
         <div className="btn-1 flex justify-center items-center border-2 cursor-pointer rounded-xl h-[60%] w-[15%]">

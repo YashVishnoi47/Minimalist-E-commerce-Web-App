@@ -16,6 +16,7 @@ import {
 import { Input } from "../ui/input";
 import { createSeller, updateSeller } from "@/lib/actions/seller.action";
 import { useRouter } from "next/navigation";
+import Seller from "./SellerComponent";
 
 const SellerForm = ({ user, seller }) => {
   const userId = user._id;
@@ -58,6 +59,10 @@ const SellerForm = ({ user, seller }) => {
       }
     }
   }
+
+  // if (user.IsSeller ===! "false") {
+  //   return <Seller user={user} seller={seller} />;
+  // }
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 p-4">
