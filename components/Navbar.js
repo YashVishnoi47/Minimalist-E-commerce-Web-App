@@ -40,7 +40,7 @@ const Navbar = async () => {
         </Link>
         <Link
           className="rounded-full px-2 hover:bg-gray-100 transition-all duration-200 ease-in-out"
-          href={"/orders"}
+          href={`/orders/${userId}`}
         >
           Orders
         </Link>

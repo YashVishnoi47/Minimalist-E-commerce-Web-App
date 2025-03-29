@@ -1,4 +1,4 @@
-import OrderComponent from "@/components/ProductsComponents/OrderComponent";
+import OrderComponent from "@/components/ProductsComponents/ProductDetailsCard";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/UtilityComponents/Loader";
 import { getProductByID } from "@/lib/actions/Product.action";
